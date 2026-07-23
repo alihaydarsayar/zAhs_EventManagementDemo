@@ -133,8 +133,9 @@ bağlantısı gerekir.
 
 ## Yayınlama
 
-`master` dalına her push'ta [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
+`main` dalına her push'ta [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
 iş akışı bağımlılıkları kurar, lint çalıştırır, `dist/` üretir ve GitHub Pages'e yayınlar.
+İş akışı **Actions** sekmesinden elle de tetiklenebilir.
 
 Etkinleştirmek için: **Settings → Pages → Build and deployment → Source: `GitHub Actions`**
 

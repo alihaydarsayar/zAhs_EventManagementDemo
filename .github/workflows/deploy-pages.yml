@@ -2,7 +2,7 @@ name: Demoyu GitHub Pages'e yayınla
 
 on:
   push:
-    branches: [master]
+    branches: [main, master]
   workflow_dispatch:
 
 # Pages'e yayın için gereken izinler
