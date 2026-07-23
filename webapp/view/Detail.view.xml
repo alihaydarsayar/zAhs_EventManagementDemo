@@ -1,0 +1,239 @@
+<mvc:View
+    controllerName="com.alihaydarsayar.demo.zfiorieventmng.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <Page
+        id="detailPage"
+        title="{i18n>detailTitle}"
+        showNavButton="true"
+        navButtonPress=".onNavBack"
+        enableScrolling="false"
+        class="sapUiNoContentPadding">
+
+        <uxap:ObjectPageLayout
+            id="objectPage"
+            showTitleInHeaderContent="true"
+            headerContentPinnable="true"
+            upperCaseAnchorBar="false"
+            showFooter="true">
+
+            <!-- Başlık -->
+            <uxap:headerTitle>
+                <uxap:ObjectPageDynamicHeaderTitle>
+                    <uxap:heading>
+                        <VBox>
+                            <Title text="{em>trackingId}" level="H1"/>
+                            <Text text="{em>description}" class="sapUiTinyMarginTop"/>
+                        </VBox>
+                    </uxap:heading>
+                    <uxap:snappedContent>
+                        <ObjectStatus
+                            text="{ path: 'em>status', formatter: '.formatter.statusText' }"
+                            state="{ path: 'em>status', formatter: '.formatter.statusState' }"
+                            icon="{ path: 'em>status', formatter: '.formatter.statusIcon' }"/>
+                    </uxap:snappedContent>
+                    <uxap:actions>
+                        <Button
+                            text="{i18n>reportEvent}"
+                            type="Emphasized"
+                            icon="sap-icon://add-activity"
+                            press=".onOpenReportDialog"/>
+                    </uxap:actions>
+                </uxap:ObjectPageDynamicHeaderTitle>
+            </uxap:headerTitle>
+
+            <!-- Başlık içeriği: özet göstergeler -->
+            <uxap:headerContent>
+                <FlexBox wrap="Wrap" alignItems="Start" class="emHeaderFacts">
+                    <VBox class="emFact">
+                        <Label text="{i18n>colStatus}"/>
+                        <ObjectStatus
+                            text="{ path: 'em>status', formatter: '.formatter.statusText' }"
+                            state="{ path: 'em>status', formatter: '.formatter.statusState' }"
+                            icon="{ path: 'em>status', formatter: '.formatter.statusIcon' }"
+                            class="emFactValue"/>
+                    </VBox>
+                    <VBox class="emFact">
+                        <Label text="{i18n>lblDelay}"/>
+                        <ObjectStatus
+                            text="{ path: 'em>delayHours', formatter: '.formatter.delayText' }"
+                            state="{ path: 'em>delayHours', formatter: '.formatter.delayState' }"
+                            class="emFactValue"/>
+                    </VBox>
+                    <VBox class="emFact">
+                        <Label text="{i18n>lblCurrentLocation}"/>
+                        <Text text="{em>currentLocation}" class="emFactValue"/>
+                    </VBox>
+                    <VBox class="emFact">
+                        <Label text="{i18n>lblPlannedEnd}"/>
+                        <Text text="{ path: 'em>plannedEnd', formatter: '.formatter.dateTime' }" class="emFactValue"/>
+                    </VBox>
+                    <VBox class="emFact emFactWide">
+                        <Label text="{i18n>lblProgress}"/>
+                        <ProgressIndicator
+                            percentValue="{em>progress}"
+                            displayValue="{em>progress}%"
+                            showValue="true"
+                            state="{ path: 'em>status', formatter: '.formatter.progressState' }"
+                            class="emFactValue"/>
+                    </VBox>
+                </FlexBox>
+            </uxap:headerContent>
+
+            <uxap:sections>
+
+                <!-- Genel bilgiler -->
+                <uxap:ObjectPageSection title="{i18n>sectionGeneral}" titleUppercase="false">
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection titleUppercase="false">
+                            <form:SimpleForm
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                                labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+                                columnsXL="2" columnsL="2"
+                                singleContainerFullSize="false">
+                                <Label text="{i18n>lblEventId}"/>
+                                <Text text="{em>id}"/>
+                                <Label text="{i18n>lblType}"/>
+                                <Text text="{em>type}"/>
+                                <Label text="{i18n>lblPartner}"/>
+                                <Text text="{em>partner}"/>
+                                <Label text="{i18n>lblCarrier}"/>
+                                <Text text="{em>carrier}"/>
+                                <Label text="{i18n>lblPriority}"/>
+                                <Text text="{em>priority}"/>
+
+                                <Label text="{i18n>lblOrigin}"/>
+                                <Text text="{em>origin}"/>
+                                <Label text="{i18n>lblDestination}"/>
+                                <Text text="{em>destination}"/>
+                                <Label text="{i18n>lblPlannedStart}"/>
+                                <Text text="{ path: 'em>plannedStart', formatter: '.formatter.dateTime' }"/>
+                                <Label text="{i18n>lblPlannedEnd}"/>
+                                <Text text="{ path: 'em>plannedEnd', formatter: '.formatter.dateTime' }"/>
+                                <Label text="{i18n>lblActualEnd}"/>
+                                <ObjectStatus
+                                    text="{ path: 'em>actualEnd', formatter: '.formatter.actualEndText' }"
+                                    state="{ path: 'em>actualEnd', formatter: '.formatter.actualEndState' }"/>
+                            </form:SimpleForm>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+
+                <!-- Olay akışı (zaman çizelgesi) -->
+                <uxap:ObjectPageSection title="{i18n>sectionTimeline}" titleUppercase="false">
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection titleUppercase="false">
+                            <List
+                                items="{em>events}"
+                                showSeparators="None"
+                                class="emTimeline">
+                                <CustomListItem>
+                                    <HBox alignItems="Start" class="emTimelineRow">
+                                        <core:Icon
+                                            src="{ path: 'em>state', formatter: '.formatter.eventIcon' }"
+                                            color="{ path: 'em>state', formatter: '.formatter.eventIconColor' }"
+                                            class="emTimelineIcon"/>
+                                        <VBox class="emTimelineBody">
+                                            <HBox alignItems="Center" wrap="Wrap" class="emTimelineHead">
+                                                <Title text="{em>name}" level="H4" wrapping="true"/>
+                                                <ObjectStatus
+                                                    text="{ path: 'em>state', formatter: '.formatter.eventStateText' }"
+                                                    state="{ path: 'em>state', formatter: '.formatter.eventStateValue' }"
+                                                    class="sapUiTinyMarginBegin"/>
+                                            </HBox>
+                                            <Text
+                                                text="{ path: 'em>at', formatter: '.formatter.dateTime' }"
+                                                class="emTimelineMeta"/>
+                                            <Text text="{em>location}" class="emTimelineMeta"/>
+                                            <Text
+                                                text="{em>note}"
+                                                visible="{= !!${em>note} }"
+                                                class="emTimelineNote"/>
+                                            <Text
+                                                text="{ parts: ['i18n>reportedBy', 'em>reportedBy'], formatter: '.formatter.reportedByText' }"
+                                                visible="{= !!${em>reportedBy} }"
+                                                class="emTimelineMeta"/>
+                                        </VBox>
+                                    </HBox>
+                                </CustomListItem>
+                            </List>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+
+                <!-- İstisnalar -->
+                <uxap:ObjectPageSection title="{i18n>sectionExceptions}" titleUppercase="false">
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection titleUppercase="false">
+                            <MessageStrip
+                                text="{i18n>noExceptions}"
+                                type="Success"
+                                showIcon="true"
+                                visible="{= ${em>exceptions}.length === 0 }"/>
+                            <List
+                                items="{em>exceptions}"
+                                showSeparators="None"
+                                visible="{= ${em>exceptions}.length > 0 }">
+                                <CustomListItem>
+                                    <VBox class="emExceptionItem">
+                                        <MessageStrip
+                                            text="{em>text}"
+                                            type="{em>severity}"
+                                            showIcon="true"/>
+                                        <Text
+                                            text="{ path: 'em>at', formatter: '.formatter.dateTime' }"
+                                            class="emTimelineMeta sapUiTinyMarginTop"/>
+                                    </VBox>
+                                </CustomListItem>
+                            </List>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+
+                <!-- Durum öznitelikleri -->
+                <uxap:ObjectPageSection title="{i18n>sectionAttributes}" titleUppercase="false">
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection titleUppercase="false">
+                            <Table items="{em>attributes}" showSeparators="Inner">
+                                <columns>
+                                    <Column width="16rem">
+                                        <Text text="{i18n>colAttrName}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>colAttrValue}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Label text="{em>name}"/>
+                                            <Text text="{em>value}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+
+            </uxap:sections>
+
+            <uxap:footer>
+                <OverflowToolbar>
+                    <ToolbarSpacer/>
+                    <Button
+                        text="{i18n>reportEvent}"
+                        type="Emphasized"
+                        icon="sap-icon://add-activity"
+                        press=".onOpenReportDialog"/>
+                </OverflowToolbar>
+            </uxap:footer>
+
+        </uxap:ObjectPageLayout>
+    </Page>
+</mvc:View>

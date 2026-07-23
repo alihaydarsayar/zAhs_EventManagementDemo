@@ -1,0 +1,211 @@
+<mvc:View
+    controllerName="com.alihaydarsayar.demo.zfiorieventmng.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+
+    <f:DynamicPage id="mainPage" headerExpanded="true" toggleHeaderOnTitleClick="true">
+
+        <!-- Başlık -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>mainTitle}" level="H1"/>
+                </f:heading>
+                <f:expandedContent>
+                    <Text text="{i18n>mainSubtitle}"/>
+                </f:expandedContent>
+                <f:snappedContent>
+                    <Text text="{view>/summary}"/>
+                </f:snappedContent>
+                <f:actions>
+                    <Button
+                        icon="sap-icon://refresh"
+                        text="{i18n>refresh}"
+                        tooltip="{i18n>refresh}"
+                        press=".onRefresh"/>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- KPI kartları -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <HBox wrap="Wrap" renderType="Bare" class="emKpiStrip">
+                    <GenericTile
+                        id="tileAll"
+                        header="{i18n>kpiAll}"
+                        frameType="OneByOne"
+                        press=".onKpiPress"
+                        class="emKpiTile emKpiTileActive">
+                        <TileContent unit="{i18n>kpiUnit}">
+                            <NumericContent value="{view>/counts/ALL}" icon="sap-icon://it-host" valueColor="Neutral" withMargin="false"/>
+                        </TileContent>
+                        <customData>
+                            <core:CustomData key="filterKey" value="ALL"/>
+                        </customData>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tileInTransit"
+                        header="{i18n>kpiInTransit}"
+                        frameType="OneByOne"
+                        press=".onKpiPress"
+                        class="emKpiTile">
+                        <TileContent unit="{i18n>kpiUnit}">
+                            <NumericContent value="{view>/counts/IN_TRANSIT}" icon="sap-icon://shipping-status" valueColor="Neutral" withMargin="false"/>
+                        </TileContent>
+                        <customData>
+                            <core:CustomData key="filterKey" value="IN_TRANSIT"/>
+                        </customData>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tileDelayed"
+                        header="{i18n>kpiDelayed}"
+                        frameType="OneByOne"
+                        press=".onKpiPress"
+                        class="emKpiTile">
+                        <TileContent unit="{i18n>kpiUnit}">
+                            <NumericContent value="{view>/counts/DELAYED}" icon="sap-icon://alert" valueColor="Critical" withMargin="false"/>
+                        </TileContent>
+                        <customData>
+                            <core:CustomData key="filterKey" value="DELAYED"/>
+                        </customData>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tileException"
+                        header="{i18n>kpiException}"
+                        frameType="OneByOne"
+                        press=".onKpiPress"
+                        class="emKpiTile">
+                        <TileContent unit="{i18n>kpiUnit}">
+                            <NumericContent value="{view>/counts/EXCEPTION}" icon="sap-icon://error" valueColor="Error" withMargin="false"/>
+                        </TileContent>
+                        <customData>
+                            <core:CustomData key="filterKey" value="EXCEPTION"/>
+                        </customData>
+                    </GenericTile>
+
+                    <GenericTile
+                        id="tileCompleted"
+                        header="{i18n>kpiCompleted}"
+                        frameType="OneByOne"
+                        press=".onKpiPress"
+                        class="emKpiTile">
+                        <TileContent unit="{i18n>kpiUnit}">
+                            <NumericContent value="{view>/counts/COMPLETED}" icon="sap-icon://sys-enter-2" valueColor="Good" withMargin="false"/>
+                        </TileContent>
+                        <customData>
+                            <core:CustomData key="filterKey" value="COMPLETED"/>
+                        </customData>
+                    </GenericTile>
+                </HBox>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <!-- Liste -->
+        <f:content>
+            <Table
+                id="handlerTable"
+                items="{ path: 'em>/handlers', sorter: { path: 'trackingId' } }"
+                growing="true"
+                growingThreshold="12"
+                growingScrollToLoad="true"
+                sticky="ColumnHeaders,HeaderToolbar"
+                noDataText="{i18n>noDataText}"
+                updateFinished=".onUpdateFinished">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{= ${i18n>listTitle} + ' (' + ${view>/count} + ')' }" level="H2"/>
+                        <ToolbarSpacer/>
+                        <SearchField
+                            width="18rem"
+                            placeholder="{i18n>searchPlaceholder}"
+                            search=".onSearch"
+                            liveChange=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData priority="NeverOverflow" minWidth="9rem" maxWidth="18rem" shrinkable="true"/>
+                            </layoutData>
+                        </SearchField>
+                        <Select
+                            id="sortSelect"
+                            tooltip="{i18n>sortTitle}"
+                            icon="sap-icon://sort"
+                            autoAdjustWidth="true"
+                            change=".onSortChange">
+                            <core:Item key="trackingId" text="{i18n>sortByTracking}"/>
+                            <core:Item key="status" text="{i18n>sortByStatus}"/>
+                            <core:Item key="delayHours" text="{i18n>sortByDelay}"/>
+                            <core:Item key="plannedEnd" text="{i18n>sortByEta}"/>
+                        </Select>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column width="9rem">
+                        <Text text="{i18n>colTracking}"/>
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>colDescription}"/>
+                    </Column>
+                    <Column width="10rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>colType}"/>
+                    </Column>
+                    <Column width="9rem">
+                        <Text text="{i18n>colStatus}"/>
+                    </Column>
+                    <Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>colLocation}"/>
+                    </Column>
+                    <Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>colLastEvent}"/>
+                    </Column>
+                    <Column width="11rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" hAlign="End">
+                        <Text text="{i18n>colEta}"/>
+                    </Column>
+                    <Column width="9rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                        <Text text="{i18n>colProgress}"/>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Navigation" press=".onItemPress">
+                        <cells>
+                            <ObjectIdentifier title="{em>trackingId}" text="{em>id}"/>
+
+                            <ObjectIdentifier title="{em>description}" text="{em>partner}"/>
+
+                            <Text text="{em>type}"/>
+
+                            <ObjectStatus
+                                text="{ path: 'em>status', formatter: '.formatter.statusText' }"
+                                state="{ path: 'em>status', formatter: '.formatter.statusState' }"
+                                icon="{ path: 'em>status', formatter: '.formatter.statusIcon' }"/>
+
+                            <Text text="{em>currentLocation}"/>
+
+                            <ObjectIdentifier
+                                title="{em>lastEvent}"
+                                text="{ path: 'em>lastEventAt', formatter: '.formatter.dateTime' }"/>
+
+                            <ObjectStatus
+                                text="{ path: 'em>plannedEnd', formatter: '.formatter.date' }"
+                                state="{ path: 'em>delayHours', formatter: '.formatter.delayState' }"/>
+
+                            <ProgressIndicator
+                                percentValue="{em>progress}"
+                                displayValue="{em>progress}%"
+                                showValue="true"
+                                state="{ path: 'em>status', formatter: '.formatter.progressState' }"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+
+    </f:DynamicPage>
+</mvc:View>

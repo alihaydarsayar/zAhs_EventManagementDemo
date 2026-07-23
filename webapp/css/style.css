@@ -1,0 +1,126 @@
+/* =========================================================
+   Olay Yönetimi - özel stiller
+   Renkler SAP Horizon temasının CSS değişkenlerinden alınır,
+   böylece açık/koyu tema ve yüksek kontrast otomatik uyar.
+   ========================================================= */
+
+/* ---------- KPI kartları ---------- */
+.emKpiStrip {
+    gap: 0.75rem;
+    padding: 0.25rem 0 0.5rem 0;
+}
+
+.emKpiTile {
+    border-radius: var(--sapElement_BorderCornerRadius, 0.5rem);
+    outline: 0.125rem solid transparent;
+    outline-offset: 0.125rem;
+    transition: outline-color 0.15s ease-in-out;
+}
+
+.emKpiTileActive {
+    outline-color: var(--sapSelectedColor, #0070f2);
+}
+
+/* ---------- Detay başlığındaki özet göstergeler ---------- */
+.emHeaderFacts {
+    gap: 2rem 3rem;
+    padding-bottom: 0.5rem;
+}
+
+.emFact {
+    min-width: 9rem;
+}
+
+.emFactWide {
+    min-width: 14rem;
+}
+
+.emFactValue {
+    margin-top: 0.25rem;
+}
+
+/* ---------- Olay akışı (zaman çizelgesi) ---------- */
+.emTimeline .sapMCustomListItem {
+    border-bottom: none;
+    padding: 0;
+}
+
+.emTimelineRow {
+    position: relative;
+    padding: 0.25rem 0 1.25rem 0;
+}
+
+/* İkonları birbirine bağlayan dikey çizgi */
+.emTimelineRow::before {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    bottom: -0.25rem;
+    left: 0.9375rem;
+    width: 0.125rem;
+    background-color: var(--sapList_BorderColor, #d9d9d9);
+}
+
+/* Son olayın altında çizgi olmasın */
+.emTimeline .sapMCustomListItem:last-child .emTimelineRow::before {
+    display: none;
+}
+
+.emTimelineIcon {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    background-color: var(--sapTile_Background, #fff);
+    border: 0.0625rem solid var(--sapList_BorderColor, #d9d9d9);
+    z-index: 1;
+}
+
+.emTimelineBody {
+    flex: 1 1 auto;
+    padding-left: 1rem;
+    min-width: 0;
+}
+
+.emTimelineHead {
+    margin-bottom: 0.25rem;
+}
+
+.emTimelineMeta {
+    color: var(--sapContent_LabelColor, #556b82);
+    font-size: 0.875rem;
+}
+
+.emTimelineNote {
+    margin-top: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: var(--sapList_Background, #f5f6f7);
+    border-left: 0.1875rem solid var(--sapList_BorderColor, #d9d9d9);
+}
+
+/* ---------- İstisna listesi ---------- */
+.emExceptionItem {
+    padding: 0.5rem 0;
+}
+
+/* ---------- Küçük ekran uyarlamaları ---------- */
+@media (max-width: 600px) {
+    .emKpiStrip {
+        gap: 0.5rem;
+    }
+
+    .emHeaderFacts {
+        gap: 1rem 1.5rem;
+    }
+
+    .emFact,
+    .emFactWide {
+        min-width: 8rem;
+    }
+
+    .emTimelineBody {
+        padding-left: 0.75rem;
+    }
+}

@@ -1,0 +1,54 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+
+    <Dialog
+        id="reportEventDialog"
+        title="{i18n>reportEventTitle}"
+        contentWidth="30rem"
+        draggable="true"
+        resizable="true"
+        class="sapUiResponsiveContentPadding">
+
+        <content>
+            <form:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+                columnsXL="1" columnsL="1"
+                singleContainerFullSize="false">
+
+                <Label text="{i18n>lblEventCode}" required="true"/>
+                <Select
+                    selectedKey="{newEvent>/code}"
+                    width="100%"
+                    forceSelection="false"
+                    items="{ path: 'em>/eventCodes' }">
+                    <core:Item key="{em>code}" text="{em>name}"/>
+                </Select>
+
+                <Label text="{i18n>lblEventTime}" required="true"/>
+                <DateTimePicker value="{ path: 'newEvent>/at', type: 'sap.ui.model.type.DateTime' }" width="100%"/>
+
+                <Label text="{i18n>lblEventLocation}" required="true"/>
+                <Input value="{newEvent>/location}" width="100%"/>
+
+                <Label text="{i18n>lblEventNote}"/>
+                <TextArea
+                    value="{newEvent>/note}"
+                    rows="3"
+                    width="100%"
+                    growing="true"
+                    placeholder="{i18n>eventNotePlaceholder}"/>
+            </form:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button text="{i18n>submit}" type="Emphasized" press=".onSubmitReport"/>
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>cancel}" press=".onCancelReport"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

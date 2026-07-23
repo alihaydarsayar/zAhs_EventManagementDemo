@@ -1,0 +1,499 @@
+{
+  "handlers": [
+    {
+      "id": "EH-100001",
+      "trackingId": "SHP-4711",
+      "type": "Sevkiyat",
+      "description": "Tekstil sevkiyatı - Konteyner MSKU2381",
+      "status": "IN_TRANSIT",
+      "priority": "Yüksek",
+      "partner": "Nordex Textiles GmbH",
+      "carrier": "Arkas Lojistik",
+      "origin": "İstanbul, TR",
+      "destination": "Hamburg, DE",
+      "currentLocation": "Ege Denizi - açık deniz",
+      "plannedStart": "2026-07-18T09:00:00",
+      "plannedEnd": "2026-07-28T17:00:00",
+      "actualEnd": "",
+      "progress": 55,
+      "delayHours": 0,
+      "lastEvent": "Limandan Çıkış",
+      "lastEventAt": "2026-07-20T08:30:00",
+      "events": [
+        { "code": "POD_CRT", "name": "Sevkiyat Oluşturuldu", "at": "2026-07-18T09:05:00", "location": "İstanbul, TR", "state": "ACTUAL", "reportedBy": "ERP / VL01N", "note": "Sevkiyat belgesi 0080001234 oluşturuldu." },
+        { "code": "LOAD", "name": "Yükleme Tamamlandı", "at": "2026-07-19T14:20:00", "location": "Ambarlı Limanı", "state": "ACTUAL", "reportedBy": "Depo Terminali", "note": "24 palet yüklendi." },
+        { "code": "DEP", "name": "Limandan Çıkış", "at": "2026-07-20T08:30:00", "location": "Ambarlı Limanı", "state": "ACTUAL", "reportedBy": "Arkas Lojistik", "note": "" },
+        { "code": "ARR_HUB", "name": "Aktarma Limanına Varış", "at": "2026-07-24T12:00:00", "location": "Valencia, ES", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "ARR", "name": "Varış Limanı", "at": "2026-07-28T17:00:00", "location": "Hamburg, DE", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "POD", "name": "Teslim Onayı", "at": "2026-07-29T10:00:00", "location": "Nordex Depo", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Sevkiyat Belgesi", "value": "0080001234" },
+        { "name": "Konteyner No", "value": "MSKU2381" },
+        { "name": "Brüt Ağırlık", "value": "18.400 KG" },
+        { "name": "Incoterm", "value": "CIF Hamburg" }
+      ]
+    },
+    {
+      "id": "EH-100002",
+      "trackingId": "SHP-4712",
+      "type": "Sevkiyat",
+      "description": "Hazır giyim - Ekspres kargo",
+      "status": "DELAYED",
+      "priority": "Yüksek",
+      "partner": "Zara Logistica SA",
+      "carrier": "DHL Freight",
+      "origin": "Bursa, TR",
+      "destination": "Zaragoza, ES",
+      "currentLocation": "Kapıkule Gümrük",
+      "plannedStart": "2026-07-16T07:00:00",
+      "plannedEnd": "2026-07-22T18:00:00",
+      "actualEnd": "",
+      "progress": 40,
+      "delayHours": 26,
+      "lastEvent": "Gümrük Girişi",
+      "lastEventAt": "2026-07-21T05:10:00",
+      "events": [
+        { "code": "POD_CRT", "name": "Sevkiyat Oluşturuldu", "at": "2026-07-16T07:12:00", "location": "Bursa, TR", "state": "ACTUAL", "reportedBy": "ERP / VL01N", "note": "" },
+        { "code": "DEP", "name": "Tesisten Çıkış", "at": "2026-07-17T06:40:00", "location": "Bursa Fabrika", "state": "ACTUAL", "reportedBy": "DHL Freight", "note": "" },
+        { "code": "CUS_IN", "name": "Gümrük Girişi", "at": "2026-07-21T05:10:00", "location": "Kapıkule", "state": "ACTUAL", "reportedBy": "Gümrük Müşaviri", "note": "Beyanname kontrolü sürüyor." },
+        { "code": "CUS_OUT", "name": "Gümrük Çıkışı", "at": "2026-07-20T12:00:00", "location": "Kapıkule", "state": "OVERDUE", "reportedBy": "", "note": "Beklenen olay gerçekleşmedi." },
+        { "code": "ARR", "name": "Varış Deposu", "at": "2026-07-22T18:00:00", "location": "Zaragoza, ES", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [
+        { "text": "Gümrük çıkışı 26 saat gecikmeli - evrak eksikliği", "severity": "Warning", "at": "2026-07-21T14:00:00" }
+      ],
+      "attributes": [
+        { "name": "Sevkiyat Belgesi", "value": "0080001235" },
+        { "name": "Araç Plakası", "value": "16 ABC 341" },
+        { "name": "Brüt Ağırlık", "value": "9.150 KG" },
+        { "name": "Incoterm", "value": "DAP Zaragoza" }
+      ]
+    },
+    {
+      "id": "EH-100003",
+      "trackingId": "PO-8802341",
+      "type": "Satınalma Siparişi",
+      "description": "Ham madde - Polyester elyaf 40 ton",
+      "status": "EXCEPTION",
+      "priority": "Kritik",
+      "partner": "Reliance Industries",
+      "carrier": "Maersk Line",
+      "origin": "Mumbai, IN",
+      "destination": "Mersin, TR",
+      "currentLocation": "Cidde Limanı",
+      "plannedStart": "2026-07-02T08:00:00",
+      "plannedEnd": "2026-07-21T12:00:00",
+      "actualEnd": "",
+      "progress": 70,
+      "delayHours": 72,
+      "lastEvent": "Aktarma Gecikmesi",
+      "lastEventAt": "2026-07-22T19:45:00",
+      "events": [
+        { "code": "PO_CNF", "name": "Sipariş Teyidi", "at": "2026-07-02T08:30:00", "location": "Mumbai, IN", "state": "ACTUAL", "reportedBy": "Tedarikçi Portalı", "note": "" },
+        { "code": "DEP", "name": "Gemi Yüklemesi", "at": "2026-07-05T16:00:00", "location": "Nhava Sheva", "state": "ACTUAL", "reportedBy": "Maersk Line", "note": "" },
+        { "code": "ARR_HUB", "name": "Aktarma Limanına Varış", "at": "2026-07-19T11:00:00", "location": "Cidde, SA", "state": "ACTUAL", "reportedBy": "Maersk Line", "note": "" },
+        { "code": "EXC", "name": "Aktarma Gecikmesi", "at": "2026-07-22T19:45:00", "location": "Cidde, SA", "state": "EXCEPTION", "reportedBy": "Maersk Line", "note": "Bağlantı gemisi kapasite nedeniyle konteyneri almadı." },
+        { "code": "ARR", "name": "Varış Limanı", "at": "2026-07-21T12:00:00", "location": "Mersin, TR", "state": "OVERDUE", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [
+        { "text": "Bağlantı gemisi kaçırıldı - 3 gün gecikme öngörülüyor", "severity": "Error", "at": "2026-07-22T19:45:00" },
+        { "text": "Üretim planına etki: 24.07 haftası elyaf stoğu kritik", "severity": "Warning", "at": "2026-07-23T06:00:00" }
+      ],
+      "attributes": [
+        { "name": "Satınalma Siparişi", "value": "4500089123" },
+        { "name": "Konteyner No", "value": "MRKU7781204" },
+        { "name": "Miktar", "value": "40.000 KG" },
+        { "name": "Incoterm", "value": "FOB Nhava Sheva" }
+      ]
+    },
+    {
+      "id": "EH-100004",
+      "trackingId": "SHP-4713",
+      "type": "Sevkiyat",
+      "description": "Ev tekstili - Perakende dağıtımı",
+      "status": "COMPLETED",
+      "priority": "Orta",
+      "partner": "Karaca Mağazacılık",
+      "carrier": "Horoz Lojistik",
+      "origin": "Denizli, TR",
+      "destination": "Ankara, TR",
+      "currentLocation": "Ankara Dağıtım Merkezi",
+      "plannedStart": "2026-07-14T08:00:00",
+      "plannedEnd": "2026-07-16T17:00:00",
+      "actualEnd": "2026-07-16T15:20:00",
+      "progress": 100,
+      "delayHours": 0,
+      "lastEvent": "Teslim Onayı",
+      "lastEventAt": "2026-07-16T15:20:00",
+      "events": [
+        { "code": "POD_CRT", "name": "Sevkiyat Oluşturuldu", "at": "2026-07-14T08:10:00", "location": "Denizli, TR", "state": "ACTUAL", "reportedBy": "ERP / VL01N", "note": "" },
+        { "code": "LOAD", "name": "Yükleme Tamamlandı", "at": "2026-07-14T13:00:00", "location": "Denizli Depo", "state": "ACTUAL", "reportedBy": "Depo Terminali", "note": "" },
+        { "code": "DEP", "name": "Tesisten Çıkış", "at": "2026-07-15T05:30:00", "location": "Denizli Depo", "state": "ACTUAL", "reportedBy": "Horoz Lojistik", "note": "" },
+        { "code": "ARR", "name": "Varış Deposu", "at": "2026-07-16T11:45:00", "location": "Ankara DM", "state": "ACTUAL", "reportedBy": "Horoz Lojistik", "note": "" },
+        { "code": "POD", "name": "Teslim Onayı", "at": "2026-07-16T15:20:00", "location": "Ankara DM", "state": "ACTUAL", "reportedBy": "Karaca Mağazacılık", "note": "İrsaliye imzalandı, eksik yok." }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Sevkiyat Belgesi", "value": "0080001210" },
+        { "name": "Araç Plakası", "value": "20 KRC 77" },
+        { "name": "Brüt Ağırlık", "value": "6.700 KG" },
+        { "name": "Incoterm", "value": "DDP Ankara" }
+      ]
+    },
+    {
+      "id": "EH-100005",
+      "trackingId": "PRD-77120",
+      "type": "Üretim Emri",
+      "description": "Dokuma hattı - Parti 77120",
+      "status": "IN_TRANSIT",
+      "priority": "Orta",
+      "partner": "Dahili - Üretim",
+      "carrier": "-",
+      "origin": "Çorlu Fabrika",
+      "destination": "Çorlu Mamul Deposu",
+      "currentLocation": "Boyahane",
+      "plannedStart": "2026-07-20T06:00:00",
+      "plannedEnd": "2026-07-25T22:00:00",
+      "actualEnd": "",
+      "progress": 65,
+      "delayHours": 0,
+      "lastEvent": "Boyama Başladı",
+      "lastEventAt": "2026-07-22T14:00:00",
+      "events": [
+        { "code": "REL", "name": "Emir Serbest Bırakıldı", "at": "2026-07-20T06:05:00", "location": "Çorlu Fabrika", "state": "ACTUAL", "reportedBy": "ERP / CO02", "note": "" },
+        { "code": "OP10", "name": "Dokuma Tamamlandı", "at": "2026-07-22T09:30:00", "location": "Dokuma Hattı 3", "state": "ACTUAL", "reportedBy": "MES", "note": "" },
+        { "code": "OP20", "name": "Boyama Başladı", "at": "2026-07-22T14:00:00", "location": "Boyahane", "state": "ACTUAL", "reportedBy": "MES", "note": "" },
+        { "code": "OP30", "name": "Kalite Kontrol", "at": "2026-07-24T16:00:00", "location": "QC Laboratuvarı", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "GR", "name": "Mamul Girişi", "at": "2026-07-25T22:00:00", "location": "Mamul Deposu", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Üretim Emri", "value": "000100077120" },
+        { "name": "Malzeme", "value": "TX-DOKUMA-220" },
+        { "name": "Miktar", "value": "12.000 M" },
+        { "name": "İş Merkezi", "value": "DOKUMA-03" }
+      ]
+    },
+    {
+      "id": "EH-100006",
+      "trackingId": "SHP-4714",
+      "type": "Sevkiyat",
+      "description": "Aksesuar - Havayolu kargo",
+      "status": "PLANNED",
+      "priority": "Düşük",
+      "partner": "Mango Retail SL",
+      "carrier": "Turkish Cargo",
+      "origin": "İstanbul, TR",
+      "destination": "Barselona, ES",
+      "currentLocation": "İstanbul Kargo Terminali",
+      "plannedStart": "2026-07-25T04:00:00",
+      "plannedEnd": "2026-07-26T20:00:00",
+      "actualEnd": "",
+      "progress": 5,
+      "delayHours": 0,
+      "lastEvent": "Sevkiyat Oluşturuldu",
+      "lastEventAt": "2026-07-22T11:00:00",
+      "events": [
+        { "code": "POD_CRT", "name": "Sevkiyat Oluşturuldu", "at": "2026-07-22T11:00:00", "location": "İstanbul, TR", "state": "ACTUAL", "reportedBy": "ERP / VL01N", "note": "" },
+        { "code": "LOAD", "name": "Yükleme", "at": "2026-07-25T04:00:00", "location": "IST Kargo", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "DEP", "name": "Kalkış", "at": "2026-07-25T08:15:00", "location": "IST", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "ARR", "name": "Varış", "at": "2026-07-25T11:40:00", "location": "BCN", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "POD", "name": "Teslim Onayı", "at": "2026-07-26T20:00:00", "location": "Mango Depo", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Sevkiyat Belgesi", "value": "0080001240" },
+        { "name": "AWB No", "value": "235-88710233" },
+        { "name": "Brüt Ağırlık", "value": "820 KG" },
+        { "name": "Incoterm", "value": "CPT Barselona" }
+      ]
+    },
+    {
+      "id": "EH-100007",
+      "trackingId": "PO-8802355",
+      "type": "Satınalma Siparişi",
+      "description": "Boya kimyasalı - Reaktif boya seti",
+      "status": "IN_TRANSIT",
+      "priority": "Orta",
+      "partner": "Archroma Deutschland",
+      "carrier": "Kuehne+Nagel",
+      "origin": "Reinach, CH",
+      "destination": "Çorlu Fabrika",
+      "currentLocation": "Ljubljana, SI",
+      "plannedStart": "2026-07-19T09:00:00",
+      "plannedEnd": "2026-07-27T14:00:00",
+      "actualEnd": "",
+      "progress": 45,
+      "delayHours": 0,
+      "lastEvent": "Transit Geçiş",
+      "lastEventAt": "2026-07-22T22:10:00",
+      "events": [
+        { "code": "PO_CNF", "name": "Sipariş Teyidi", "at": "2026-07-19T09:20:00", "location": "Reinach, CH", "state": "ACTUAL", "reportedBy": "Tedarikçi Portalı", "note": "" },
+        { "code": "DEP", "name": "Tedarikçiden Çıkış", "at": "2026-07-21T07:00:00", "location": "Reinach, CH", "state": "ACTUAL", "reportedBy": "Kuehne+Nagel", "note": "" },
+        { "code": "TRN", "name": "Transit Geçiş", "at": "2026-07-22T22:10:00", "location": "Ljubljana, SI", "state": "ACTUAL", "reportedBy": "Kuehne+Nagel", "note": "" },
+        { "code": "CUS_IN", "name": "Gümrük Girişi", "at": "2026-07-25T10:00:00", "location": "Kapıkule", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "GR", "name": "Mal Girişi", "at": "2026-07-27T14:00:00", "location": "Çorlu Fabrika", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Satınalma Siparişi", "value": "4500089140" },
+        { "name": "Tehlikeli Madde", "value": "UN 3082 / Sınıf 9" },
+        { "name": "Miktar", "value": "4.200 KG" },
+        { "name": "Incoterm", "value": "DAP Çorlu" }
+      ]
+    },
+    {
+      "id": "EH-100008",
+      "trackingId": "SHP-4715",
+      "type": "Sevkiyat",
+      "description": "Numune gönderisi - Fuar materyali",
+      "status": "COMPLETED",
+      "priority": "Düşük",
+      "partner": "Heimtextil Messe",
+      "carrier": "UPS",
+      "origin": "İstanbul, TR",
+      "destination": "Frankfurt, DE",
+      "currentLocation": "Frankfurt Messe",
+      "plannedStart": "2026-07-08T10:00:00",
+      "plannedEnd": "2026-07-11T17:00:00",
+      "actualEnd": "2026-07-10T13:05:00",
+      "progress": 100,
+      "delayHours": 0,
+      "lastEvent": "Teslim Onayı",
+      "lastEventAt": "2026-07-10T13:05:00",
+      "events": [
+        { "code": "POD_CRT", "name": "Sevkiyat Oluşturuldu", "at": "2026-07-08T10:05:00", "location": "İstanbul, TR", "state": "ACTUAL", "reportedBy": "ERP / VL01N", "note": "" },
+        { "code": "DEP", "name": "Tesisten Çıkış", "at": "2026-07-08T16:00:00", "location": "İstanbul Depo", "state": "ACTUAL", "reportedBy": "UPS", "note": "" },
+        { "code": "ARR", "name": "Varış", "at": "2026-07-10T09:30:00", "location": "Frankfurt, DE", "state": "ACTUAL", "reportedBy": "UPS", "note": "" },
+        { "code": "POD", "name": "Teslim Onayı", "at": "2026-07-10T13:05:00", "location": "Frankfurt Messe", "state": "ACTUAL", "reportedBy": "Fuar Ekibi", "note": "Planlanandan 1 gün önce teslim edildi." }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Sevkiyat Belgesi", "value": "0080001198" },
+        { "name": "Takip No", "value": "1Z999AA10123456784" },
+        { "name": "Brüt Ağırlık", "value": "145 KG" },
+        { "name": "Incoterm", "value": "DDP Frankfurt" }
+      ]
+    },
+    {
+      "id": "EH-100009",
+      "trackingId": "SHP-4716",
+      "type": "Sevkiyat",
+      "description": "Denim kumaş - Toplu sevkiyat",
+      "status": "DELAYED",
+      "priority": "Yüksek",
+      "partner": "Levi Strauss EU",
+      "carrier": "Ekol Lojistik",
+      "origin": "Kayseri, TR",
+      "destination": "Plzen, CZ",
+      "currentLocation": "Sofya, BG",
+      "plannedStart": "2026-07-17T06:00:00",
+      "plannedEnd": "2026-07-23T12:00:00",
+      "actualEnd": "",
+      "progress": 60,
+      "delayHours": 14,
+      "lastEvent": "Transit Geçiş",
+      "lastEventAt": "2026-07-22T20:30:00",
+      "events": [
+        { "code": "POD_CRT", "name": "Sevkiyat Oluşturuldu", "at": "2026-07-17T06:10:00", "location": "Kayseri, TR", "state": "ACTUAL", "reportedBy": "ERP / VL01N", "note": "" },
+        { "code": "DEP", "name": "Tesisten Çıkış", "at": "2026-07-18T05:00:00", "location": "Kayseri Depo", "state": "ACTUAL", "reportedBy": "Ekol Lojistik", "note": "" },
+        { "code": "TRN", "name": "Transit Geçiş", "at": "2026-07-22T20:30:00", "location": "Sofya, BG", "state": "ACTUAL", "reportedBy": "Ekol Lojistik", "note": "Sürücü dinlenme süresi uzadı." },
+        { "code": "ARR", "name": "Varış Deposu", "at": "2026-07-23T12:00:00", "location": "Plzen, CZ", "state": "OVERDUE", "reportedBy": "", "note": "" },
+        { "code": "POD", "name": "Teslim Onayı", "at": "2026-07-23T16:00:00", "location": "Plzen, CZ", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [
+        { "text": "Tahmini varış 14 saat gecikmeli - müşteri bilgilendirilmeli", "severity": "Warning", "at": "2026-07-23T07:15:00" }
+      ],
+      "attributes": [
+        { "name": "Sevkiyat Belgesi", "value": "0080001244" },
+        { "name": "Araç Plakası", "value": "38 EKL 902" },
+        { "name": "Brüt Ağırlık", "value": "21.300 KG" },
+        { "name": "Incoterm", "value": "DAP Plzen" }
+      ]
+    },
+    {
+      "id": "EH-100010",
+      "trackingId": "PRD-77135",
+      "type": "Üretim Emri",
+      "description": "Konfeksiyon hattı - Parti 77135",
+      "status": "EXCEPTION",
+      "priority": "Kritik",
+      "partner": "Dahili - Üretim",
+      "carrier": "-",
+      "origin": "Çorlu Fabrika",
+      "destination": "Çorlu Mamul Deposu",
+      "currentLocation": "Kalite Kontrol",
+      "plannedStart": "2026-07-15T06:00:00",
+      "plannedEnd": "2026-07-22T22:00:00",
+      "actualEnd": "",
+      "progress": 80,
+      "delayHours": 30,
+      "lastEvent": "Kalite Reddi",
+      "lastEventAt": "2026-07-22T17:40:00",
+      "events": [
+        { "code": "REL", "name": "Emir Serbest Bırakıldı", "at": "2026-07-15T06:05:00", "location": "Çorlu Fabrika", "state": "ACTUAL", "reportedBy": "ERP / CO02", "note": "" },
+        { "code": "OP10", "name": "Kesim Tamamlandı", "at": "2026-07-17T15:00:00", "location": "Kesimhane", "state": "ACTUAL", "reportedBy": "MES", "note": "" },
+        { "code": "OP20", "name": "Dikim Tamamlandı", "at": "2026-07-21T18:20:00", "location": "Dikim Hattı 5", "state": "ACTUAL", "reportedBy": "MES", "note": "" },
+        { "code": "EXC", "name": "Kalite Reddi", "at": "2026-07-22T17:40:00", "location": "QC Laboratuvarı", "state": "EXCEPTION", "reportedBy": "QM / QA32", "note": "Renk haslığı toleransın dışında - parti bloke edildi." },
+        { "code": "GR", "name": "Mamul Girişi", "at": "2026-07-22T22:00:00", "location": "Mamul Deposu", "state": "OVERDUE", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [
+        { "text": "Kalite reddi - 4.500 adet bloke, yeniden işlem gerekiyor", "severity": "Error", "at": "2026-07-22T17:40:00" }
+      ],
+      "attributes": [
+        { "name": "Üretim Emri", "value": "000100077135" },
+        { "name": "Malzeme", "value": "KF-TSHIRT-190" },
+        { "name": "Miktar", "value": "4.500 ADET" },
+        { "name": "İş Merkezi", "value": "DIKIM-05" }
+      ]
+    },
+    {
+      "id": "EH-100011",
+      "trackingId": "SHP-4717",
+      "type": "Sevkiyat",
+      "description": "Mefruşat - Bölgesel dağıtım",
+      "status": "IN_TRANSIT",
+      "priority": "Orta",
+      "partner": "Boyner Perakende",
+      "carrier": "Aras Kargo",
+      "origin": "İzmir, TR",
+      "destination": "Antalya, TR",
+      "currentLocation": "Aydın Aktarma",
+      "plannedStart": "2026-07-22T08:00:00",
+      "plannedEnd": "2026-07-24T17:00:00",
+      "actualEnd": "",
+      "progress": 50,
+      "delayHours": 0,
+      "lastEvent": "Aktarma Merkezine Varış",
+      "lastEventAt": "2026-07-23T04:20:00",
+      "events": [
+        { "code": "POD_CRT", "name": "Sevkiyat Oluşturuldu", "at": "2026-07-22T08:05:00", "location": "İzmir, TR", "state": "ACTUAL", "reportedBy": "ERP / VL01N", "note": "" },
+        { "code": "DEP", "name": "Tesisten Çıkış", "at": "2026-07-22T18:30:00", "location": "İzmir Depo", "state": "ACTUAL", "reportedBy": "Aras Kargo", "note": "" },
+        { "code": "ARR_HUB", "name": "Aktarma Merkezine Varış", "at": "2026-07-23T04:20:00", "location": "Aydın Aktarma", "state": "ACTUAL", "reportedBy": "Aras Kargo", "note": "" },
+        { "code": "ARR", "name": "Varış Deposu", "at": "2026-07-24T12:00:00", "location": "Antalya DM", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "POD", "name": "Teslim Onayı", "at": "2026-07-24T17:00:00", "location": "Antalya DM", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Sevkiyat Belgesi", "value": "0080001251" },
+        { "name": "Araç Plakası", "value": "35 ARS 118" },
+        { "name": "Brüt Ağırlık", "value": "3.900 KG" },
+        { "name": "Incoterm", "value": "DDP Antalya" }
+      ]
+    },
+    {
+      "id": "EH-100012",
+      "trackingId": "PO-8802360",
+      "type": "Satınalma Siparişi",
+      "description": "Yedek parça - Dokuma tezgahı mekiği",
+      "status": "PLANNED",
+      "priority": "Düşük",
+      "partner": "Picanol NV",
+      "carrier": "DB Schenker",
+      "origin": "Ieper, BE",
+      "destination": "Çorlu Fabrika",
+      "currentLocation": "Tedarikçi Deposu",
+      "plannedStart": "2026-07-27T09:00:00",
+      "plannedEnd": "2026-08-04T16:00:00",
+      "actualEnd": "",
+      "progress": 0,
+      "delayHours": 0,
+      "lastEvent": "Sipariş Teyidi",
+      "lastEventAt": "2026-07-21T15:30:00",
+      "events": [
+        { "code": "PO_CNF", "name": "Sipariş Teyidi", "at": "2026-07-21T15:30:00", "location": "Ieper, BE", "state": "ACTUAL", "reportedBy": "Tedarikçi Portalı", "note": "" },
+        { "code": "DEP", "name": "Tedarikçiden Çıkış", "at": "2026-07-27T09:00:00", "location": "Ieper, BE", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "CUS_IN", "name": "Gümrük Girişi", "at": "2026-08-02T10:00:00", "location": "Kapıkule", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "GR", "name": "Mal Girişi", "at": "2026-08-04T16:00:00", "location": "Çorlu Fabrika", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Satınalma Siparişi", "value": "4500089155" },
+        { "name": "Malzeme", "value": "SP-PIC-4410" },
+        { "name": "Miktar", "value": "24 ADET" },
+        { "name": "Incoterm", "value": "EXW Ieper" }
+      ]
+    },
+    {
+      "id": "EH-100013",
+      "trackingId": "SHP-4718",
+      "type": "Sevkiyat",
+      "description": "İade sevkiyatı - Hatalı parti dönüşü",
+      "status": "DELAYED",
+      "priority": "Orta",
+      "partner": "Nordex Textiles GmbH",
+      "carrier": "Arkas Lojistik",
+      "origin": "Hamburg, DE",
+      "destination": "İstanbul, TR",
+      "currentLocation": "Rotterdam, NL",
+      "plannedStart": "2026-07-12T10:00:00",
+      "plannedEnd": "2026-07-22T16:00:00",
+      "actualEnd": "",
+      "progress": 35,
+      "delayHours": 48,
+      "lastEvent": "Aktarma Bekliyor",
+      "lastEventAt": "2026-07-20T13:00:00",
+      "events": [
+        { "code": "POD_CRT", "name": "İade Oluşturuldu", "at": "2026-07-12T10:15:00", "location": "Hamburg, DE", "state": "ACTUAL", "reportedBy": "ERP / VA01", "note": "" },
+        { "code": "DEP", "name": "Limandan Çıkış", "at": "2026-07-16T08:00:00", "location": "Hamburg Limanı", "state": "ACTUAL", "reportedBy": "Arkas Lojistik", "note": "" },
+        { "code": "ARR_HUB", "name": "Aktarma Bekliyor", "at": "2026-07-20T13:00:00", "location": "Rotterdam, NL", "state": "ACTUAL", "reportedBy": "Arkas Lojistik", "note": "Bağlantı gemisi 2 gün gecikmeli." },
+        { "code": "ARR", "name": "Varış Limanı", "at": "2026-07-22T16:00:00", "location": "İstanbul, TR", "state": "OVERDUE", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [
+        { "text": "İade partisi 48 saat gecikmeli - kredi notu süreci bekliyor", "severity": "Warning", "at": "2026-07-22T16:30:00" }
+      ],
+      "attributes": [
+        { "name": "İade Belgesi", "value": "0060004411" },
+        { "name": "Konteyner No", "value": "ARKU5510338" },
+        { "name": "Brüt Ağırlık", "value": "7.200 KG" },
+        { "name": "İade Nedeni", "value": "Renk sapması" }
+      ]
+    },
+    {
+      "id": "EH-100014",
+      "trackingId": "SHP-4719",
+      "type": "Sevkiyat",
+      "description": "Havlu koleksiyonu - Sezon açılışı",
+      "status": "IN_TRANSIT",
+      "priority": "Yüksek",
+      "partner": "El Corte Ingles",
+      "carrier": "MSC",
+      "origin": "Denizli, TR",
+      "destination": "Valencia, ES",
+      "currentLocation": "Akdeniz - açık deniz",
+      "plannedStart": "2026-07-19T07:00:00",
+      "plannedEnd": "2026-07-30T14:00:00",
+      "actualEnd": "",
+      "progress": 48,
+      "delayHours": 0,
+      "lastEvent": "Limandan Çıkış",
+      "lastEventAt": "2026-07-21T19:00:00",
+      "events": [
+        { "code": "POD_CRT", "name": "Sevkiyat Oluşturuldu", "at": "2026-07-19T07:10:00", "location": "Denizli, TR", "state": "ACTUAL", "reportedBy": "ERP / VL01N", "note": "" },
+        { "code": "LOAD", "name": "Yükleme Tamamlandı", "at": "2026-07-21T11:30:00", "location": "İzmir Limanı", "state": "ACTUAL", "reportedBy": "Depo Terminali", "note": "" },
+        { "code": "DEP", "name": "Limandan Çıkış", "at": "2026-07-21T19:00:00", "location": "İzmir Limanı", "state": "ACTUAL", "reportedBy": "MSC", "note": "" },
+        { "code": "ARR", "name": "Varış Limanı", "at": "2026-07-29T09:00:00", "location": "Valencia, ES", "state": "EXPECTED", "reportedBy": "", "note": "" },
+        { "code": "POD", "name": "Teslim Onayı", "at": "2026-07-30T14:00:00", "location": "El Corte Depo", "state": "EXPECTED", "reportedBy": "", "note": "" }
+      ],
+      "exceptions": [],
+      "attributes": [
+        { "name": "Sevkiyat Belgesi", "value": "0080001256" },
+        { "name": "Konteyner No", "value": "MSCU8820117" },
+        { "name": "Brüt Ağırlık", "value": "16.850 KG" },
+        { "name": "Incoterm", "value": "CIF Valencia" }
+      ]
+    }
+  ],
+  "eventCodes": [
+    { "code": "DEP", "name": "Çıkış / Yola Çıkma" },
+    { "code": "TRN", "name": "Transit Geçiş" },
+    { "code": "ARR_HUB", "name": "Aktarma Noktasına Varış" },
+    { "code": "CUS_IN", "name": "Gümrük Girişi" },
+    { "code": "CUS_OUT", "name": "Gümrük Çıkışı" },
+    { "code": "ARR", "name": "Varış" },
+    { "code": "POD", "name": "Teslim Onayı" },
+    { "code": "EXC", "name": "İstisna / Sorun Bildirimi" }
+  ]
+}
