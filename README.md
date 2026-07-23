@@ -1,5 +1,12 @@
 # SAP Event Management — Fiori Demo
 
+### ▶ [Canlı demoyu aç](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/)
+
+[![Canlı Demo](https://img.shields.io/badge/Canl%C4%B1%20Demo-a%C3%A7-0070f2?style=for-the-badge&logo=sap&logoColor=white)](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/)
+[![Yayın](https://github.com/alihaydarsayar/zAhs_EventManagementDemo/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/alihaydarsayar/zAhs_EventManagementDemo/actions/workflows/deploy-pages.yml)
+
+Kurulum gerekmez, tarayıcıda doğrudan çalışır.
+
 SAP Event Management (EM) senaryosunun SAPUI5 / Fiori demo uygulaması. Sevkiyat,
 satınalma ve üretim süreçlerini olay bazlı takip eder; nakliye seferlerini, rota
 duraklarını ve navlun kalemlerini gösterir, kullanıcının yeni olay bildirmesine izin verir.
@@ -13,20 +20,33 @@ modelinden okunur, dolayısıyla uygulama tamamen statik olarak yayınlanabilir.
 
 ## Ekran görüntüleri
 
+Görsellere tıklayarak ilgili ekranı canlı demoda açabilirsiniz.
+
 ### Takip nesneleri listesi
 KPI kartları durum filtresi olarak çalışır; arama, taşıma modu filtresi ve sıralama üsttedir.
 
-![Takip nesneleri listesi](docs/screenshots/liste.png)
+[![Takip nesneleri listesi](docs/screenshots/liste.png)](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/)
 
 ### Detay — nakliye ve navlun
 Sefer bilgileri, rota durakları ve navlun ücret kalemleri.
 
-![Detay ve navlun](docs/screenshots/detay-navlun.png)
+[![Detay ve navlun](docs/screenshots/detay-navlun.png)](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/#/handler/EH-100003)
 
 ### Mobil
 Aynı ekran telefonda: kartlar iki sütuna, tablo sütunları popin'e düşer.
 
-<img src="docs/screenshots/mobil.png" alt="Mobil görünüm" width="360">
+<a href="https://alihaydarsayar.github.io/zAhs_EventManagementDemo/#/handler/EH-100001">
+  <img src="docs/screenshots/mobil.png" alt="Mobil görünüm" width="360">
+</a>
+
+### Demoda bakılacak örnek kayıtlar
+
+| Senaryo | Bağlantı |
+| --- | --- |
+| Denizyolu seferi, aktarma gecikmesi ve açık istisna | [PO-8802341](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/#/handler/EH-100003) |
+| Karayolu seferi, gümrükte gecikmiş beklenen olay | [SHP-4712](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/#/handler/EH-100002) |
+| Havayolu seferi, henüz başlamamış planlı sevkiyat | [SHP-4714](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/#/handler/EH-100006) |
+| Üretim emri — navlun içermeyen fabrika içi süreç | [PRD-77135](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/#/handler/EH-100010) |
 
 ---
 
@@ -132,6 +152,9 @@ bağlantısı gerekir.
 ---
 
 ## Yayınlama
+
+Uygulama GitHub Pages üzerinde yayındadır:
+[alihaydarsayar.github.io/zAhs_EventManagementDemo](https://alihaydarsayar.github.io/zAhs_EventManagementDemo/)
 
 `main` dalına her push'ta [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
 iş akışı bağımlılıkları kurar, lint çalıştırır, `dist/` üretir ve GitHub Pages'e yayınlar.
