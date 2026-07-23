@@ -124,6 +124,129 @@
                     </uxap:subSections>
                 </uxap:ObjectPageSection>
 
+                <!-- Nakliye ve navlun -->
+                <uxap:ObjectPageSection title="{i18n>sectionFreight}" titleUppercase="false">
+                    <uxap:subSections>
+
+                        <uxap:ObjectPageSubSection title="{i18n>subSectionVoyage}" titleUppercase="false">
+                            <VBox>
+                            <MessageStrip
+                                text="{i18n>noFreight}"
+                                type="Information"
+                                showIcon="true"
+                                visible="{= !${em>freight} }"/>
+                            <form:SimpleForm
+                                editable="false"
+                                layout="ResponsiveGridLayout"
+                                labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+                                columnsXL="2" columnsL="2"
+                                singleContainerFullSize="false"
+                                visible="{= !!${em>freight} }">
+                                <Label text="{i18n>lblMode}"/>
+                                <HBox alignItems="Center">
+                                    <core:Icon src="{em>freight/modeIcon}" class="emModeIcon"/>
+                                    <Text text="{em>freight/mode}"/>
+                                </HBox>
+                                <Label text="{i18n>lblVoyageNo}"/>
+                                <ObjectIdentifier title="{em>freight/voyageNo}"/>
+                                <Label text="{i18n>lblVessel}"/>
+                                <Text text="{em>freight/vessel}"/>
+                                <Label text="{i18n>lblTransportDoc}"/>
+                                <Text text="{em>freight/transportDoc}"/>
+                                <Label text="{i18n>lblDriver}"/>
+                                <Text text="{= ${em>freight/driver} || '-' }"/>
+
+                                <Label text="{i18n>lblCarrier}"/>
+                                <Text text="{em>carrier}"/>
+                                <Label text="{i18n>lblChargeableWeight}"/>
+                                <Text text="{em>freight/chargeableWeight}"/>
+                                <Label text="{i18n>lblVolume}"/>
+                                <Text text="{em>freight/volume}"/>
+                                <Label text="{i18n>lblPackages}"/>
+                                <Text text="{em>freight/packages}"/>
+                                <Label text="{i18n>lblFreightTotal}"/>
+                                <ObjectNumber
+                                    number="{ parts: ['em>freight/total', 'em>freight/currency'], formatter: '.formatter.currency' }"
+                                    emphasized="true"/>
+                            </form:SimpleForm>
+                            </VBox>
+                        </uxap:ObjectPageSubSection>
+
+                        <uxap:ObjectPageSubSection title="{i18n>subSectionRoute}" titleUppercase="false" visible="{= !!${em>freight} }">
+                            <Table items="{em>freight/route}" showSeparators="Inner">
+                                <columns>
+                                    <Column width="4rem" hAlign="Center">
+                                        <Text text="{i18n>colStopSeq}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>colStopName}"/>
+                                    </Column>
+                                    <Column width="8rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                                        <Text text="{i18n>colStopRole}"/>
+                                    </Column>
+                                    <Column width="11rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                                        <Text text="{i18n>colStopPlanned}"/>
+                                    </Column>
+                                    <Column width="11rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                                        <Text text="{i18n>colStopActual}"/>
+                                    </Column>
+                                    <Column width="10rem">
+                                        <Text text="{i18n>colStopStatus}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{em>seq}"/>
+                                            <ObjectIdentifier title="{em>name}"/>
+                                            <Text text="{em>role}"/>
+                                            <Text text="{ path: 'em>planned', formatter: '.formatter.dateTime' }"/>
+                                            <Text text="{ path: 'em>actual', formatter: '.formatter.dateTime' }"/>
+                                            <ObjectStatus
+                                                text="{ path: 'em>status', formatter: '.formatter.stopStateText' }"
+                                                state="{ path: 'em>status', formatter: '.formatter.stopState' }"
+                                                icon="{ path: 'em>status', formatter: '.formatter.stopIcon' }"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </uxap:ObjectPageSubSection>
+
+                        <uxap:ObjectPageSubSection title="{i18n>subSectionCost}" titleUppercase="false" visible="{= !!${em>freight} }">
+                            <VBox>
+                            <Table items="{em>freight/costItems}" showSeparators="Inner">
+                                <columns>
+                                    <Column>
+                                        <Text text="{i18n>colCostItem}"/>
+                                    </Column>
+                                    <Column width="12rem" hAlign="End">
+                                        <Text text="{i18n>colCostAmount}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{em>text}"/>
+                                            <ObjectNumber
+                                                number="{ parts: ['em>amount', 'em>currency'], formatter: '.formatter.currency' }"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <Toolbar class="emCostTotalBar">
+                                <ToolbarSpacer/>
+                                <Label text="{i18n>lblFreightTotal}" design="Bold"/>
+                                <ObjectNumber
+                                    number="{ parts: ['em>freight/total', 'em>freight/currency'], formatter: '.formatter.currency' }"
+                                    emphasized="true"
+                                    class="sapUiTinyMarginBegin"/>
+                            </Toolbar>
+                            </VBox>
+                        </uxap:ObjectPageSubSection>
+
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+
                 <!-- Olay akışı (zaman çizelgesi) -->
                 <uxap:ObjectPageSection title="{i18n>sectionTimeline}" titleUppercase="false">
                     <uxap:subSections>
@@ -170,6 +293,7 @@
                 <uxap:ObjectPageSection title="{i18n>sectionExceptions}" titleUppercase="false">
                     <uxap:subSections>
                         <uxap:ObjectPageSubSection titleUppercase="false">
+                            <VBox>
                             <MessageStrip
                                 text="{i18n>noExceptions}"
                                 type="Success"
@@ -191,6 +315,7 @@
                                     </VBox>
                                 </CustomListItem>
                             </List>
+                            </VBox>
                         </uxap:ObjectPageSubSection>
                     </uxap:subSections>
                 </uxap:ObjectPageSection>

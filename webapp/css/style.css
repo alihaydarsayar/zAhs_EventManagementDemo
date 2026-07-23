@@ -23,12 +23,15 @@
 
 /* ---------- Detay başlığındaki özet göstergeler ---------- */
 .emHeaderFacts {
-    gap: 2rem 3rem;
+    gap: 1.5rem 3rem;
     padding-bottom: 0.5rem;
+    max-width: 100%;
 }
 
 .emFact {
+    flex: 0 1 auto;
     min-width: 9rem;
+    max-width: 100%;
 }
 
 .emFactWide {
@@ -100,6 +103,23 @@
     border-left: 0.1875rem solid var(--sapList_BorderColor, #d9d9d9);
 }
 
+/* ---------- Taşıma modu ve navlun ---------- */
+.emModeIcon {
+    color: var(--sapContent_IconColor, #0070f2);
+    margin-right: 0.5rem;
+    flex: 0 0 auto;
+}
+
+.emCellSubtle {
+    color: var(--sapContent_LabelColor, #556b82);
+    font-size: 0.8125rem;
+}
+
+.emCostTotalBar {
+    background: transparent;
+    border-top: 0.0625rem solid var(--sapList_BorderColor, #d9d9d9);
+}
+
 /* ---------- İstisna listesi ---------- */
 .emExceptionItem {
     padding: 0.5rem 0;
@@ -111,13 +131,19 @@
         gap: 0.5rem;
     }
 
+    /* Küçük ekranda göstergeler iki sütuna düşer, yatay taşma olmaz */
     .emHeaderFacts {
-        gap: 1rem 1.5rem;
+        gap: 1rem;
     }
 
-    .emFact,
+    .emFact {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 0;
+    }
+
     .emFactWide {
-        min-width: 8rem;
+        flex: 1 1 100%;
+        min-width: 0;
     }
 
     .emTimelineBody {

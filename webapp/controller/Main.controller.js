@@ -23,6 +23,7 @@ sap.ui.define([
 
         onInit: function () {
             this._sStatusFilter = "ALL";
+            this._sModeFilter = "ALL";
             this._sQuery = "";
 
             this.getView().setModel(new JSONModel({
@@ -61,6 +62,15 @@ sap.ui.define([
                 sValue = oEvent.getParameter("query") || "";
             }
             this._sQuery = sValue.trim();
+            this._applyFilters();
+        },
+
+        /**
+         * Taşıma modu seçimi değiştiğinde listeyi filtreler.
+         * @param {sap.ui.base.Event} oEvent Select change olayı
+         */
+        onModeChange: function (oEvent) {
+            this._sModeFilter = oEvent.getParameter("selectedItem").getKey();
             this._applyFilters();
         },
 
@@ -118,6 +128,10 @@ sap.ui.define([
 
             if (this._sStatusFilter !== "ALL") {
                 aFilters.push(new Filter("status", FilterOperator.EQ, this._sStatusFilter));
+            }
+
+            if (this._sModeFilter !== "ALL") {
+                aFilters.push(new Filter("freight/mode", FilterOperator.EQ, this._sModeFilter));
             }
 
             if (this._sQuery) {

@@ -132,6 +132,14 @@
                             </layoutData>
                         </SearchField>
                         <Select
+                            id="modeSelect"
+                            tooltip="{i18n>modeFilterTooltip}"
+                            autoAdjustWidth="true"
+                            change=".onModeChange"
+                            items="{ path: 'em>/transportModes' }">
+                            <core:Item key="{em>key}" text="{em>text}"/>
+                        </Select>
+                        <Select
                             id="sortSelect"
                             tooltip="{i18n>sortTitle}"
                             icon="sap-icon://sort"
@@ -152,7 +160,7 @@
                     <Column>
                         <Text text="{i18n>colDescription}"/>
                     </Column>
-                    <Column width="10rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
+                    <Column width="12rem" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline">
                         <Text text="{i18n>colType}"/>
                     </Column>
                     <Column width="9rem">
@@ -179,7 +187,16 @@
 
                             <ObjectIdentifier title="{em>description}" text="{em>partner}"/>
 
-                            <Text text="{em>type}"/>
+                            <HBox alignItems="Center">
+                                <core:Icon
+                                    src="{em>freight/modeIcon}"
+                                    visible="{= !!${em>freight} }"
+                                    class="emModeIcon"/>
+                                <VBox>
+                                    <Text text="{em>type}"/>
+                                    <Text text="{em>freight/voyageNo}" class="emCellSubtle"/>
+                                </VBox>
+                            </HBox>
 
                             <ObjectStatus
                                 text="{ path: 'em>status', formatter: '.formatter.statusText' }"

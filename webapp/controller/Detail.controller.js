@@ -114,13 +114,16 @@ sap.ui.define([
             var oModel = this.getOwnerComponent().getModel("em");
             var oHandler = oModel.getProperty(this._sHandlerPath);
             var aCodes = oModel.getProperty("/eventCodes");
-            var sName = (aCodes.find(function (o) { return o.code === oNew.code; }) || {}).name || oNew.code;
             var sAt = this._toIsoLocal(oNew.at);
 
             // Aynı olay kodu beklenen olarak duruyorsa onu gerçekleşene çevir, yoksa yeni satır ekle
             var oExpected = oHandler.events.find(function (oEvent) {
                 return oEvent.code === oNew.code && oEvent.state !== "ACTUAL";
             });
+
+            // Zaman çizelgesindeki mevcut ad korunur, yoksa katalogdan alınır
+            var sName = oExpected ? oExpected.name
+                : ((aCodes.find(function (o) { return o.code === oNew.code; }) || {}).name || oNew.code);
 
             if (oExpected) {
                 oExpected.state = oNew.code === "EXC" ? "EXCEPTION" : "ACTUAL";

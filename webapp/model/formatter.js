@@ -1,10 +1,12 @@
 sap.ui.define([
-    "sap/ui/core/format/DateFormat"
-], function (DateFormat) {
+    "sap/ui/core/format/DateFormat",
+    "sap/ui/core/format/NumberFormat"
+], function (DateFormat, NumberFormat) {
     "use strict";
 
     var oDateTimeFormat = DateFormat.getDateTimeInstance({ style: "medium" });
     var oDateFormat = DateFormat.getDateInstance({ style: "medium" });
+    var oCurrencyFormat = NumberFormat.getCurrencyInstance({ showMeasure: true });
 
     return {
 
@@ -181,6 +183,58 @@ sap.ui.define([
                 case "EXCEPTION": return "Error";
                 default: return "None";
             }
+        },
+
+        /**
+         * Tutarı para birimiyle biçimlendirir.
+         * @param {number} fAmount Tutar
+         * @param {string} sCurrency Para birimi kodu
+         * @returns {string} Biçimlendirilmiş tutar
+         */
+        currency: function (fAmount, sCurrency) {
+            if (fAmount === undefined || fAmount === null || !sCurrency) {
+                return "";
+            }
+            return oCurrencyFormat.format(fAmount, sCurrency);
+        },
+
+        /**
+         * Rota durağının durumuna göre ikon döndürür.
+         * @param {string} sStatus Durak durumu
+         * @returns {string} sap-icon URI
+         */
+        stopIcon: function (sStatus) {
+            switch (sStatus) {
+                case "DONE": return "sap-icon://sys-enter-2";
+                case "DELAYED": return "sap-icon://alert";
+                case "EXCEPTION": return "sap-icon://error";
+                case "NEXT": return "sap-icon://journey-arrive";
+                default: return "sap-icon://pending";
+            }
+        },
+
+        /**
+         * Rota durağının durumunu ValueState'e eşler.
+         * @param {string} sStatus Durak durumu
+         * @returns {string} ValueState
+         */
+        stopState: function (sStatus) {
+            switch (sStatus) {
+                case "DONE": return "Success";
+                case "DELAYED": return "Warning";
+                case "EXCEPTION": return "Error";
+                case "NEXT": return "Information";
+                default: return "None";
+            }
+        },
+
+        /**
+         * Rota durağının durumunu çevrilmiş metne dönüştürür.
+         * @param {string} sStatus Durak durumu
+         * @returns {string} Çevrilmiş metin
+         */
+        stopStateText: function (sStatus) {
+            return this.getModel("i18n").getResourceBundle().getText("stop" + sStatus);
         },
 
         /**
